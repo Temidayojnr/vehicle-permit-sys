@@ -50,8 +50,8 @@
                                     <td>
                                         @if ($item->Stage2 ==1)
                                             <span class="badge badge-info">Awaiting approval</span>
-                                            @else
-                                            <a href="{{route('AprrovalAdmin', ['id' => $item->id])}}" class="btn btn-sm btn-success" type="submit" >Approve</a>
+                                        @else
+                                            <a href="{{url('approval-admin')}}/{{$item->id}}" class="btn btn-sm btn-success" type="submit" >Approve</a>
                                         @endif
                                     </td>
                                 </tr>

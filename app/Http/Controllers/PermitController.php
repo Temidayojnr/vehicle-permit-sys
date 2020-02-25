@@ -79,8 +79,9 @@ class PermitController extends Controller
         $approve = Permit::find($id);
         $approve->Stage2 = 1;
         $approve->update();
-        Mail::to($approve->Email)->send(new ApplicantPermit($approve));
-        return redirect()->route('AprrovalAdmin')->with('success', 'Applicant was approved for the next stage');
+        $user = User::where('IsSupervisor', 1)->first();
+        Mail::to($user->email)->send(new ApplicantPermit($approve));
+        return redirect()->route('approval1')->with('success', 'Applicant was approved for the next stage');
     }
 
     public function approval2()

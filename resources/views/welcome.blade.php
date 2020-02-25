@@ -88,6 +88,13 @@
                 <div class="links">
                     <a href="{{ route('register') }}">Apply for your vehicle permit</a>
                     <a href="{{route('Apply')}}">Applied already? check the progress</a>
+                    @if (auth()->check() && auth()->user()->IsAdmin == 1)
+                        <a href="{{route('approval1')}}">Check Approval queue</a>
+                    @endif
+                    @if (auth()->check() && auth()->user()->IsSupervisor == 1)
+                        <a href="{{route('approval2')}}">Check Approval queue</a>
+                    @endif
+                    
                 </div>
             </div>
         </div>
