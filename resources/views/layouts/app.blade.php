@@ -9,15 +9,22 @@
 
     <title>{{ config('app.name', 'VPS') }}</title>
 
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+    <script src="{{ asset('plugins/jquery-ui/external/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('plugins/jquery-ui/jquery-ui.js') }}"></script>
+    <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+    <link href="{{ asset('plugins/jquery-ui/jquery-ui.css') }}">
+    <link href="{{ asset('plugins/jquery-ui/jquery-ui.min.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.18/b-1.5.2/b-colvis-1.5.2/b-flash-1.5.2/b-html5-1.5.2/b-print-1.5.2/r-2.2.2/datatables.min.css"/>
+    <link href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.18/b-1.5.2/b-colvis-1.5.2/b-flash-1.5.2/b-html5-1.5.2/b-print-1.5.2/r-2.2.2/datatables.min.css"/>
 
     <link href="{{ asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css') }}" rel="stylesheet" type="text/css">
     <script src="{{ asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
@@ -93,23 +100,19 @@
         </main>
     </div>
 
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables-responsive/js/datatables.responsive.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/datatables-responsive/js/lodash.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="{{ asset('plugins/datatables-responsive/js/datatables.responsive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/datatables-responsive/js/lodash.min.js') }}"></script>
 
     <script>
-        $(function(){
-            if( !$('.date.dp input').is("[autocomplete]") ) {
-          $('.date.dp input').attr('autocomplete', 'off')
-        }
-
-            var options = {
-                todayHighlight: true,
-                format: 'yyyy-mm-dd',
-                autoclose: true,
-                startDate: '1920-01-01',
-            };
-            $('.dp').datepicker(options);
+        $.noConflict();
+            jQuery(document).ready(function ($) {
+            $('.datepicker').datepicker();
+            $('.datepicker').on("click", function(e){
+                console.log("clicked");
+                $('.calendar').focus();
+            });
         });
-      </script>
+    </script>
 </body>
 </html>

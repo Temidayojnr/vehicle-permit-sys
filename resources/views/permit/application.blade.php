@@ -46,30 +46,38 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="Picture">Upload Picture</label>
-                                <input type="file" name="Picture" value="" class="form-control">
+                                <input type="file" name="Picture" value="" class="form-control full-width">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="DOB">Date of Birth</label>
-                                <input type="date" name="DOB" value="" class="form-control">
+                                <div class="input-group">
+                                    <input type="text" name="DOB" value="" placeholder="DOB" class="form-control datepicker">
+                                    <span class="calendar"><i class="fa fa-calendar"></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
     
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="Sex">Sex</label>
-                            <select name="Sex" class="full-width" data-init-plugin="select2" id="">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Others">Others</option>
-                            </select>
+                            <div class="form-group">
+                                <label for="Sex">Sex</label>
+                                <select name="Sex" class="form-control full-width" data-init-plugin="select2" id="">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="Date">Application Date</label>
-                                <input type="date" name="Date" value="" class="form-control">
+                                <div class="input-group">
+                                    <input type="text" name="Date" value="" placeholder="Application date" class="form-control datepicker">
+                                    <span class="calendar"><i class="fa fa-calendar"></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -78,7 +86,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="State">State of Origin</label>
-                                <select name="State" class="full-width" data-init-plugin="select2" id="">
+                                <select name="State" class="form-control full-width" data-init-plugin="select2" id="">
                                     <option value="">- Select State -</option>
                                     <option value="Abuja FCT">Abuja FCT</option>
                                     <option value="Abia">Abia</option>
@@ -155,7 +163,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="ApplicationType">Application Type</label>
-                                <select name="ApplicationType" class="full-width" data-init-plugin="select2" id="">
+                                <select name="ApplicationType" class="form-control full-width" data-init-plugin="select2" id="">
                                     <option value="Articulated Vehicle">Articulated Vehicle</option>
                                     <option value="Commercial Vehicle">Commercial Vehicle</option>
                                     <option value="Private Vehicle">Private Vehicle</option>
@@ -166,7 +174,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                               <label for="PermitType">Permit Type</label>
-                              <select name="PermitType" class="full-width" data-init-plugin="select2" id="">
+                              <select name="PermitType" class="form-control full-width" data-init-plugin="select2" id="">
                                 <option value="First Time">First Time</option>
                                 <option value="Renewal">Renewal</option>
                               </select>
@@ -176,7 +184,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="Location">Location</label>
-                                <select name="Location" class="full-width" data-init-plugin="select2" id="">
+                                <select name="Location" class="form-control full-width" data-init-plugin="select2" id="">
                                     <option value="">- Select State -</option>
                                     <option value="Abuja FCT">Abuja FCT</option>
                                     <option value="Abia">Abia</option>
@@ -219,11 +227,9 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="row">
-                        <div class="pull-right">
-                            <button class="btn bt-sm btn-success" type="submit">Save application</button>
+                        <div class="ml-auto">
+                            <button class="btn bt-sm btn-info" type="submit">Save application</button>
                         </div>
                     </div>
                 </form>
@@ -238,7 +244,7 @@
             <div class="card-header">Application Profile & Status</div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered nowrap">
+                    <table id="permitTable" class="table DataTable table-bordered nowrap">
                         <thead>
                             <th>Name</th>
                             <th>Email</th>
@@ -268,7 +274,9 @@
                                     </td>
                                 </tr>
                             @empty
-                                <p>No Information available</p>
+                                <tr>
+                                    <td colspan="10"><p style="text-align:center; font-weight: bold;">No Information available</p></td>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -278,3 +286,39 @@
     </div>
 
 @endsection
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+    <script>
+    //     $(function(){
+    //       var options = {
+    //           todayHighlight: true,
+    //           format: 'yyyy-mm-dd',
+    //           autoclose: true,
+    //           startDate: '1920-01-01',
+    //       };
+    //       $('.datepicker').datepicker(options);
+    //   });
+        $(document).ready(function() {
+            $('.datepicker').datetimepicker({
+                format: 'dd/mm/yyyy'
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#permitTable').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ]
+            } );
+        } )
+    </script>
+@endpush
