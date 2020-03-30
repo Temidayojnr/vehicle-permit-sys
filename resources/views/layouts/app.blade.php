@@ -24,6 +24,11 @@
 
     <link href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css" />
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.18/b-1.5.2/b-colvis-1.5.2/b-flash-1.5.2/b-html5-1.5.2/b-print-1.5.2/r-2.2.2/datatables.min.css"/>
 
     <link href="{{ asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css') }}" rel="stylesheet" type="text/css">
@@ -113,6 +118,15 @@
                 $('.calendar').focus();
             });
         });
+
+        // $.noConflict();
+        // jquery(document).ready(function ($)) {(
+        //     $('.date-picker').datepicker({
+        //         format: 'yy/mm/dd',
+        //         autoclose: true,
+        //         todayHighlight: true
+        //     });
+        // )};
     </script>
 </body>
 </html>

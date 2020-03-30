@@ -13,12 +13,42 @@
         <style>
             html, body {
                 background: url(../asset/road.jpg);
-                background-color: #fff;
-                color: #636b6f;
+                background-color: rgb(0, 0, 0, 0.5);
+                color: #fff;
                 font-family: 'Nunito', sans-serif;
-                font-weight: 200;
+                font-weight: bold;
                 height: 100vh;
                 margin: 0;
+            }
+
+            .overlay {
+                position: absolute;
+                content:"";
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                opacity:.5;
+                /* background-color: #525258; */
+            }
+
+            #bg {
+                position: fixed; 
+                top: -50%; 
+                left: -50%; 
+                width: 200%; 
+                height: 200%;
+            }
+
+            #bg img {
+                position: absolute; 
+                top: 0; 
+                left: 0; 
+                right: 0; 
+                bottom: 0; 
+                margin: auto; 
+                min-width: 50%;
+                min-height: 50%;
             }
 
             .full-height {
@@ -47,16 +77,22 @@
 
             .title {
                 font-size: 84px;
+                font-weight: bold;
+                /* background-color: rgba(0, 0, 0, 0.5); */
             }
 
             .links > a {
-                color: #636b6f;
+                color: #fff;
                 padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
+                font-size: 20px;
+                font-weight: bold;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+            }
+
+            .links > a:hover {
+                background-color: cadetblue;
             }
 
             .m-b-md {
@@ -65,6 +101,10 @@
         </style>
     </head>
     <body>
+        <div class="overlay" id="bg">
+            <img src="{{asset('images/traffic.jpg')}}" alt="">
+        </div>
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">

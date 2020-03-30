@@ -48,7 +48,7 @@
                                     <td>{{$item->ApplicationType}}</td>
                                     <td>{{$item->PermitType}}</td>
                                     <td>
-                                        @if ($item->Stage2 ==1)
+                                        @if ($item->Stage2 == 1)
                                             <span class="badge badge-info">Awaiting approval</span>
                                         @else
                                             <a href="{{url('approval-admin')}}/{{$item->id}}" class="btn btn-sm btn-success" type="submit" >Approve</a>
@@ -56,7 +56,9 @@
                                     </td>
                                 </tr>
                                 @empty
-                                <p>No Information available</p>
+                                    <tr>
+                                        <td colspan="10"><p style="text-align:center; font-weight: bold;">No Information available</p></td> 
+                                    </tr>
                             @endforelse
                     </tbody>
                 </table>

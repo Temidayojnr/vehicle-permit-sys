@@ -241,7 +241,7 @@
 
     <div class="container">
         <div class="card">
-            <div class="card-header">Application Profile & Status</div>
+            <div class="card-header"><strong>Application Profile & Status</strong></div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="permitTable" class="table DataTable table-bordered nowrap">
@@ -256,6 +256,7 @@
                             <th>Application Type</th>
                             <th>Permit Type</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </thead>
                         <tbody>
                             @forelse ($permits as $item)
@@ -272,10 +273,13 @@
                                     <td>
                                         <span class="badge badge-danger">Pending</span>
                                     </td>
+                                    <td>
+                                        <a href="#"class="btn btn-sm btn-success" data-toggle="modal" data-target="#ViewApplication">View Application</a>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="10"><p style="text-align:center; font-weight: bold;">No Information available</p></td>
+                                    <td colspan="11"><p style="text-align:center; font-weight: bold;">No Information available</p></td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -285,6 +289,28 @@
         </div>
     </div>
 
+    {{-- view application modal  --}}
+    <div class="modal fade" id="ViewApplication" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Application Info</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    Body
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- view application modal  --}}
+
 @endsection
 
 @push('scripts')
@@ -293,18 +319,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
     <script>
-    //     $(function(){
-    //       var options = {
-    //           todayHighlight: true,
-    //           format: 'yyyy-mm-dd',
-    //           autoclose: true,
-    //           startDate: '1920-01-01',
-    //       };
-    //       $('.datepicker').datepicker(options);
-    //   });
         $(document).ready(function() {
             $('.datepicker').datetimepicker({
-                format: 'dd/mm/yyyy'
+                format: 'yyyy/mm/dd'
             });
         });
     </script>

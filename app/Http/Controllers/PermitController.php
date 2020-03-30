@@ -37,9 +37,9 @@ class PermitController extends Controller
         $permit = new Permit;
         $permit->FirstName = $request->FirstName;
         $permit->LastName = $request->LastName;
-        $permit->DOB = $request->DOB;
+        $permit->DOB = date("Y-m-d", strtotime($request->input("DOB")));
         $permit->Sex = $request->Sex;
-        $permit->Date = $request->Date;
+        $permit->Date = date("Y-m-d", strtotime($request->input("Date")));
         $permit->State = $request->State;
         $permit->Occupation = $request->Occupation;
         $permit->Address = $request->Address;
