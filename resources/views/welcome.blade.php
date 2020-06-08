@@ -12,7 +12,6 @@
         <!-- Styles -->
         <style>
             html, body {
-                background: url(../asset/road.jpg);
                 background-color: rgb(0, 0, 0, 0.5);
                 color: #fff;
                 font-family: 'Nunito', sans-serif;

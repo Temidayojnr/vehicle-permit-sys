@@ -50,11 +50,11 @@
                                         <td>{{$item->PermitType}}</td>
                                         <td>
                                             @if ($item->Stage2 == 1)
-                                            <a href="{{route('AprrovalSupervisor', ['id' => $item->id])}}" class="btn btn-sm btn-success" type="submit" >Approve</a>
-                                                <br> <br>
-                                            <a href="{{route('RejectSupervisor', ['id' => $item->id])}}" class="btn btn-sm btn-danger" type="submit" >Reject</a>
+                                                <a href="{{route('AprrovalSupervisor', ['id' => $item->id])}}" class="btn btn-sm btn-success" type="submit">Approve</a>
+                                                    <br> <br>
+                                                <a href="{{route('RejectSupervisor', ['id' => $item->id])}}" class="btn btn-sm btn-danger" type="submit" >Reject</a>
                                             @else 
-                                            <span><span class="badge badge-info">Treated</span></span>
+                                                <span><span class="badge badge-info">Treated</span></span>
                                             @endif
                                         </td>
                                     </tr>
